@@ -7,12 +7,37 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector2 moveDirection;
 
+    private Rigidbody rb;
+
+    private int _moveSpeed;
+
+    #region properties
+
+    public int MoveSpeed
+    {
+        get => _moveSpeed;
+
+        set
+        {
+            if (value < 0)
+            {
+                value = 0;
+            }
+
+            _moveSpeed = value;
+
+            Debug.Log("current speed: " + _moveSpeed);
+        }
+    }
+
+    #endregion
+
     private void FixedUpdate()
     {
         // moveDirection(방향)이 있다면
         if (moveDirection != Vector2.zero)
         {
-            //if()
+            
         }
     }
 
