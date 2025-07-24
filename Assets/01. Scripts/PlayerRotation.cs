@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerRotation : MonoBehaviour
 {
     [SerializeField]
-    private PlayerMovement playerMovement;
+    private PlayerMovement _playerMovement;
+
+    private IPlayerStatesRotation currentState;
 
     private float _rotateSpeed;
+
+    #region properties
+
+    public PlayerMovement PlayerMovement
+    {
+        get => _playerMovement;
+    }
 
     public float RotateSpeed
     {
@@ -18,18 +28,33 @@ public class PlayerRotation : MonoBehaviour
             _rotateSpeed = value;
         }
     }
+    #endregion
+
+    private void Start()
+    {
+        ChangeStateTo(new NormalState());
+
+        Debug.Log(currentState);
+
+        RotateSpeed = 10f;
+    }
 
     private void FixedUpdate()
     {
-        if (playerMovement.InputVector != Vector2.zero)
-        {
-            Debug.Log(playerMovement.InputVector);
+        currentState.UpdatePerState();
+    }
 
-            Vector3 moveVector = new Vector3(playerMovement.InputVector.x, 0, playerMovement.InputVector.y);
+    public void ChangeStateTo(IPlayerStatesRotation states)
+    {
+        currentState?.ExitState();
 
-            Quaternion targetRotation = Quaternion.LookRotation(moveVector);
+        currentState = states;
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * RotateSpeed);
-        }
+        currentState.EnterState(this);
+    }
+
+    public void OnAttack(InputAction.CallbackContext ctx)
+    {
+        // TODO: 공격 플래그
     }
 }
