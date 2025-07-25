@@ -8,7 +8,7 @@ public class PlayerRotation : MonoBehaviour
     [SerializeField]
     private PlayerMovement _playerMovement;
 
-    private IPlayerStatesRotation currentState;
+    private IPlayerRotationStates currentRotationState;
 
     private float _rotateSpeed;
 
@@ -34,23 +34,23 @@ public class PlayerRotation : MonoBehaviour
     {
         ChangeStateTo(new NormalState());
 
-        Debug.Log(currentState);
+        Debug.Log(currentRotationState);
 
-        RotateSpeed = 10f;
+        RotateSpeed = 25f;
     }
 
     private void FixedUpdate()
     {
-        currentState.UpdatePerState();
+        currentRotationState.UpdatePerState();
     }
 
-    public void ChangeStateTo(IPlayerStatesRotation states)
+    public void ChangeStateTo(IPlayerRotationStates states)
     {
-        currentState?.ExitState();
+        currentRotationState?.ExitState();
 
-        currentState = states;
+        currentRotationState = states;
 
-        currentState.EnterState(this);
+        currentRotationState.EnterState(this);
     }
 
     public void OnAttack(InputAction.CallbackContext ctx)

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : IPlayerStatesRotation
+public class AttackState : IPlayerRotationStates
 {
     public void EnterState(PlayerRotation player)
     {

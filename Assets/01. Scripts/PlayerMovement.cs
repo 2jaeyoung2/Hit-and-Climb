@@ -76,4 +76,9 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
     }
+
+    public void SetMoveSpeed(int changedMoveSpeed)
+    {
+        MoveSpeed = changedMoveSpeed;
+    }
 }

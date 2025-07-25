@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalState : IPlayerStatesRotation
+public class NormalState : IPlayerRotationStates
 {
     PlayerRotation player;
 

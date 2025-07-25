@@ -1,4 +1,4 @@
-public interface IPlayerStatesRotation
+public interface IPlayerRotationStates
 {
     public void EnterState(PlayerRotation player);
 
