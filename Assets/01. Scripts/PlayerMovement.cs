@@ -69,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         {
             InputVector = ctx.ReadValue<Vector2>().normalized;
         }
+
         else if (ctx.phase == InputActionPhase.Canceled)
         {
             InputVector = Vector2.zero;
@@ -77,8 +78,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void SetMoveSpeed(int changedMoveSpeed)
+    public void ResetMoveSpeed()
     {
-        MoveSpeed = changedMoveSpeed;
+        MoveSpeed = 5f;
     }
 }

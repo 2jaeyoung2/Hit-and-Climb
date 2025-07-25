@@ -8,11 +8,21 @@ public class PlayerRotation : MonoBehaviour
     [SerializeField]
     private PlayerMovement _playerMovement;
 
+    [SerializeField]
+    private PlayerAttack _playerAttack;
+
     private IPlayerRotationStates currentRotationState;
+
+    private bool _isTargeting = false;
 
     private float _rotateSpeed;
 
     #region properties
+
+    public PlayerAttack PlayerAttack
+    {
+        get => _playerAttack;
+    }
 
     public PlayerMovement PlayerMovement
     {
@@ -32,9 +42,7 @@ public class PlayerRotation : MonoBehaviour
 
     private void Start()
     {
-        ChangeStateTo(new NormalState());
-
-        Debug.Log(currentRotationState);
+        ChangeStateTo(new NormalRotateState());
 
         RotateSpeed = 25f;
     }
@@ -51,10 +59,5 @@ public class PlayerRotation : MonoBehaviour
         currentRotationState = states;
 
         currentRotationState.EnterState(this);
-    }
-
-    public void OnAttack(InputAction.CallbackContext ctx)
-    {
-        // TODO: 공격 플래그
     }
 }
