@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerRotation : MonoBehaviour
 {
@@ -12,8 +11,6 @@ public class PlayerRotation : MonoBehaviour
     private PlayerAttack _playerAttack;
 
     private IPlayerRotationStates currentRotationState;
-
-    private bool _isTargeting = false;
 
     private float _rotateSpeed;
 

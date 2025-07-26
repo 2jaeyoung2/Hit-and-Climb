@@ -25,8 +25,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (ctx.phase == InputActionPhase.Performed)
         {
-
-
             IsTargeting = true;
         }
 
